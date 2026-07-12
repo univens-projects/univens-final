@@ -1,0 +1,258 @@
+/* ════════════════════════════════════════════════════════════════
+   UNIVENS — design tokens
+   A strict monochrome system. Hierarchy, depth and sophistication
+   are built from tone — white, off-white, gray, graphite, near
+   black — not from color. Composition, type, material and motion
+   carry the experience.
+   ════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ══ Light foundation ══ */
+  --canvas:    #FFFFFF;   /* pure white — primary canvas (≈70% of UI) */
+  --surface-0: #FFFFFF;   /* absolute white */
+  --surface-1: #F6F6F7;   /* soft off-white — secondary surfaces */
+  --surface-2: #ECECED;   /* light gray — elevated surfaces */
+  --surface-3: #E2E2E4;   /* medium light gray */
+
+  /* ══ Dark foundation — graphite / near-black for emphasis ══ */
+  --d-canvas:      #0E0E10;   /* near black — premium contrast */
+  --d-surface:     #161618;
+  --d-elevated:    #1E1E21;
+  --d-line:        rgba(255,255,255,0.10);
+  --d-line-strong: rgba(255,255,255,0.16);
+  --on-dark:       #F7F7F8;   /* near white on dark */
+  --on-dark-soft:  #C7C7CC;
+  --on-dark-72:    rgba(247,247,248,0.72);
+  --on-dark-faint: #6B6B70;
+  --d-hairline:    rgba(255,255,255,0.06);  /* faint top-edge highlight */
+
+  /* ══ Ink — typography & primary interface, never pure black ══ */
+  --ink-900: #0E0E10;   /* near black — emphasis */
+  --ink-800: #1A1A1D;
+  --ink-700: #2E2E32;   /* graphite — headings & body */
+  --ink-600: #4A4A4F;
+  --ink-500: #6B6B70;   /* supporting text */
+  --ink-400: #9A9A9F;   /* faint / metadata */
+  --ink-300: #C4C4C9;   /* disabled */
+
+  --text-strong: var(--ink-900);
+  --text:        var(--ink-700);
+  --text-soft:   var(--ink-500);
+  --text-faint:  var(--ink-400);
+
+  /* ══ Hairline borders — never thick ══ */
+  --line:         #E8E8EA;   /* light */
+  --line-strong: #D6D6DA;   /* medium */
+  --line-em:      rgba(14,14,16,0.18);  /* emphasis hairline (graphite) */
+
+  /* ══ Glass materials (restrained, hairline edge) ══ */
+  --glass:        rgba(255,255,255,0.72);
+  --glass-strong: rgba(255,255,255,0.86);
+  --glass-dark:   rgba(14,14,16,0.55);
+  --glass-border: rgba(255,255,255,0.55);
+
+  /* ══ Chip / tag material (monochrome) ══ */
+  --chip-bg: var(--surface-2);
+  --chip-fg: var(--text);
+
+  /* ══ Shadows — layered, soft, tonal, almost invisible ══ */
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-2: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+  --shadow-3: 0 2px 4px rgba(0,0,0,0.05), 0 18px 44px rgba(0,0,0,0.10);
+  --shadow-soft: var(--shadow-2);
+  --shadow-lift: var(--shadow-3);
+
+  /* ══ Back-compat aliases ══ */
+  --paper:      var(--canvas);
+  --paper-2:    var(--surface-1);
+  --stone:      var(--surface-1);
+  --graphite:   var(--d-canvas);
+  --ivory:      var(--on-dark);
+  --emerald:    var(--ink-900);   /* generic accent → graphite (no color) */
+  --ink:        var(--text-strong);
+  --ink-soft:   var(--text-soft);
+  --ink-faint:  var(--text-faint);
+  --line-light: var(--line);
+  --line-dark:  var(--d-line);
+
+  /* ══ Type families — one family, hierarchy via size/weight/space ══ */
+  --font-sans: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', 'IBM Plex Mono', ui-monospace, 'SF Mono', 'DM Mono', monospace;
+
+  /* Type scale — ≤5 sizes per viewport, restrained */
+  --fs-meta:    0.8125rem;                       /* 13px — labels, captions */
+  --fs-nav:     0.875rem;                        /* 14px — nav, buttons */
+  --fs-body:    1.0625rem;                       /* 17px — body */
+  --fs-body-lg: clamp(1.0625rem, 1.3vw, 1.125rem); /* 17–18px */
+  --fs-sub:     1.25rem;                         /* 20px — subheads */
+  --fs-head:    clamp(1.75rem, 3vw, 2.4rem);     /* 28–38px — headings */
+  --fs-head-lg: clamp(1.85rem, 3.2vw, 2.6rem);   /* 29–41px — leads */
+  --fs-display: clamp(2rem, 4.6vw, 3.6rem);      /* 32–57px — hero */
+  --fs-tracking: -0.02em;                        /* headings tracking */
+
+  /* Micro scale — 10–13px, technical, quiet */
+  --fs-micro:    0.6875rem;                      /* 11px — primary micro */
+  --fs-micro-sm: 0.625rem;                       /* 10px — finest labels */
+  --ls-micro:    0.18em;                         /* micro tracking */
+
+  /* Leading & tracking */
+  --lh-body:  1.62;
+  --lh-lead:  1.45;
+  --lh-tight: 1.06;
+  --ls-label: 0.16em;
+  --ls-wide:  0.02em;
+
+  /* Typographic rhythm */
+  --gap-h-s: 0.875rem;   /* heading → subheading */
+  --gap-s-b: 0.625rem;   /* subheading → body */
+  --gap-b-c: 1.5rem;     /* body → CTA */
+  --gap-block: clamp(4.5rem, 10vh, 8rem);
+
+  /* Weight */
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-medium:  500;
+
+  /* ══ Spacing scale — one increment logic ══ */
+  --sp-1: 0.25rem;   /* 4px  — hairline / micro */
+  --sp-2: 0.5rem;    /* 8px  — tight */
+  --sp-3: 0.75rem;   /* 12px — compact */
+  --sp-4: 1rem;      /* 16px — base */
+  --sp-5: 1.5rem;    /* 24px — comfortable */
+  --sp-6: 2rem;      /* 32px — loose */
+  --sp-7: 3rem;      /* 48px — section internal */
+  --sp-8: 4rem;      /* 64px — column gap */
+  --sp-9: 6rem;      /* 96px — breathing room */
+
+  /* ══ Geometry ══ */
+  --radius-sm: 2px;
+  --radius:    3px;
+  --radius-lg: 6px;
+  --nav-h:     72px;
+  --dot:       7px;
+
+  /* Slide composition */
+  --deck-max:    1440px;
+  --slide-pad-y: clamp(5rem, 11vh, 8.5rem);
+  --slide-pad-x: var(--gutter);
+
+  /* Image grading — unused in monochrome build (kept for parity) */
+  --img-grade: grayscale(100%) contrast(1.04) brightness(1.02);
+
+  /* Overlay scrims — token-driven, never inline rgba */
+  --scrim-xstrong: rgba(14,14,16,0.94);
+  --scrim-strong:   rgba(14,14,16,0.82);
+  --scrim-soft:     rgba(14,14,16,0.58);
+  --scrim-canvas:   rgba(14,14,16,0.30);
+
+  /* ══ Motion — physically believable ══ */
+  --ease:      cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur:       0.7s;
+  --dur-fast:  0.42s;
+
+  /* ══ Layout ══ */
+  --container: 1280px;
+  --gutter:    clamp(1.5rem, 5vw, 6rem);
+  --section-y: clamp(6rem, 14vh, 11rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  background-color: var(--canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; cursor: pointer; }
+
+:focus-visible { outline: 2px solid var(--ink-900); outline-offset: 3px; border-radius: var(--radius-sm); }
+
+::selection { background: var(--ink-900); color: var(--canvas); }
+
+.container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* Restrained link with animated underline */
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--text-strong);
+  padding-bottom: 0.35rem;
+}
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: currentColor;
+  transform: scaleX(0.001);
+  transform-origin: left;
+  transition: transform var(--dur-fast) var(--ease);
+}
+.link:hover::after, .link:focus-visible::after { transform: scaleX(1); }
+.link .arr { transition: transform var(--dur-fast) var(--ease); }
+.link:hover .arr { transform: translateX(4px); }
+
+/* Buttons — inversion, not color */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.4rem;
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: transform var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+}
+.btn:active { transform: scale(0.985); }
+.btn--solid { background: var(--ink-900); color: var(--canvas); box-shadow: var(--shadow-1); }
+.btn--solid:hover { background: #000; box-shadow: var(--shadow-lift); transform: translateY(-1px); }
+.btn--ghost { background: var(--canvas); border-color: var(--ink-900); color: var(--ink-900); }
+.btn--ghost:hover { background: var(--surface-1); }
+.btn .arr { transition: transform var(--dur-fast) var(--ease); }
+.btn:hover .arr { transform: translateX(4px); }
+
+/* Calm reveal */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); will-change: opacity, transform; }
+.reveal.is-in { opacity: 1; transform: none; }
+.reveal[data-delay="1"] { transition-delay: 0.08s; }
+.reveal[data-delay="2"] { transition-delay: 0.16s; }
+.reveal[data-delay="3"] { transition-delay: 0.24s; }
+
+/* Micro typography — precision labels, never headings/body/CTA */
+.micro {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--ls-micro);
+  text-transform: uppercase;
+  color: var(--text-faint);
+  line-height: 1.4;
+}
+.micro--sm { font-size: var(--fs-micro-sm); letter-spacing: 0.16em; }
