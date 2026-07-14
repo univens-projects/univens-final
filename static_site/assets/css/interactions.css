@@ -1,0 +1,62 @@
+/* ════════════════════════════════════════════════════════════════
+   UNIVENS — INTELLIGENT INTERACTIONS
+   Every interaction reinforces trust, guides attention, or reveals
+   depth. All motion is restrained and stays background-aware through
+   the live --c-* variables. Nothing animates for novelty.
+   ════════════════════════════════════════════════════════════════ */
+
+/* ─── Custom guide cursor — a quiet, knowledgeable companion ── */
+.cursor, .cursor-ring {
+  position: fixed; top: 0; left: 0; z-index: 9999;
+  pointer-events: none; border-radius: 50%;
+  transform: translate(-50%, -50%); will-change: transform;
+}
+.cursor { width: 6px; height: 6px; background: var(--c-fg); transition: opacity var(--dur-fast) var(--ease), background var(--bg-dur) var(--bg-ease); }
+.cursor-ring {
+  width: 30px; height: 30px; border: 1px solid var(--c-fg); opacity: 0.45;
+  display: grid; place-items: center;
+  transition: width var(--dur) var(--ease), height var(--dur) var(--ease),
+              opacity var(--dur) var(--ease), border-color var(--bg-dur) var(--bg-ease),
+              background var(--bg-dur) var(--bg-ease);
+}
+.cursor-ring__label {
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--c-fg); white-space: nowrap;
+  opacity: 0; transform: scale(0.8); transition: opacity var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.cursor-ring.is-hover { width: 66px; height: 66px; opacity: 0.9; background: color-mix(in srgb, var(--c-fg) 8%, transparent); }
+.cursor-ring.is-hover .cursor-ring__label { opacity: 1; transform: scale(1); }
+.cursor.is-down { opacity: 0.5; }
+.cursor-ring.is-down { width: 22px; height: 22px; }
+html.has-cursor, html.has-cursor a, html.has-cursor button, html.has-cursor input { cursor: none; }
+
+/* ─── Intelligent navigation: active-section awareness ───────
+   The active item is indicated by the gliding .nav-indicator rule
+   (positioned + animated by app.js with spring physics). No weight
+   change, no pill, no glow — only a precise, quiet marker.        */
+
+/* ─── Shared statement lines complete themselves ──────────── */
+.statement { opacity: 0; transform: translateY(10px); transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
+.screen.reveal.is-in .statement { opacity: 1; transform: none; transition-delay: 0.45s; }
+.statement em { opacity: 0; transition: opacity var(--dur) var(--ease); }
+.screen.reveal.is-in .statement em { opacity: 1; transition-delay: 1s; }
+
+/* ─── Voices: genuine messages arrive one after another ───── */
+.voice { opacity: 0; transform: translateY(12px); transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
+.screen.reveal.is-in .voice { opacity: 1; transform: none; }
+.screen.reveal.is-in .voice:nth-child(1) { transition-delay: 0.06s; }
+.screen.reveal.is-in .voice:nth-child(2) { transition-delay: 0.20s; }
+.screen.reveal.is-in .voice:nth-child(3) { transition-delay: 0.34s; }
+.screen.reveal.is-in .voice:nth-child(4) { transition-delay: 0.48s; }
+
+/* ─── Invitation: the copy arrives, the field waits, quietly ── */
+.invite, .screen--console .console { opacity: 0; transform: translateY(10px); transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
+.screen.reveal.is-in .invite { opacity: 1; transform: none; }
+.screen.reveal.is-in .console { opacity: 1; transform: none; transition-delay: 0.4s; }
+
+/* ─── Magnetic targets recover smoothly ───────────────────── */
+[data-magnetic] { transition: transform var(--dur-fast) var(--ease); will-change: transform; }
+
+/* ─── Ambient form state ──────────────────────────────────── */
+.console__status.is-pending { opacity: 0.7; }
+.console__status.is-pending::after { content: ''; }

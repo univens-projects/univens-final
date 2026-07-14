@@ -1,0 +1,54 @@
+/* ════════════════════════════════════════════════════════════════
+   UNIVENS — System Initialization Preloader
+   A calm, premium boot sequence: wordmark + micro status line + a
+   thin spring-filled rule. No spinner, no bar, no counters, no logo
+   animation. The background matches the first Scroll-Driven Background
+   state, so the handoff into the homepage is seamless — never a cut.
+   ════════════════════════════════════════════════════════════════ */
+
+.preloader {
+  position: fixed; inset: 0; z-index: 2000;
+  display: grid; place-items: center;
+  background: var(--canvas);
+  opacity: 1;
+  transition: opacity 600ms var(--ease-soft);
+  pointer-events: auto;
+}
+.preloader.is-done { opacity: 0; pointer-events: none; }
+
+.preloader__inner {
+  display: grid; justify-items: center; gap: var(--sp-4);
+  transform: translateY(8px);
+  transition: transform 600ms var(--ease-soft);
+}
+.preloader.is-active .preloader__inner { transform: none; }
+
+.preloader__mark {
+  text-transform: uppercase;
+  font-family: var(--font-sans); font-weight: var(--weight-medium);
+  font-size: 20px; letter-spacing: 0.3em;
+  color: var(--ink-900);
+  opacity: 0; transform: translateY(10px);
+  transition: opacity 500ms var(--ease) 150ms, transform 600ms var(--ease) 150ms;
+}
+.preloader.is-active .preloader__mark { opacity: 1; transform: none; }
+
+.preloader__status {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-400);
+  opacity: 0; transition: opacity 400ms var(--ease) 400ms; min-height: 1.2em;
+}
+.preloader.is-active .preloader__status { opacity: 0.7; }
+
+.preloader__track {
+  width: 150px; height: 1px; background: var(--line-light);
+  overflow: hidden; margin-top: 2px;
+}
+.preloader__fill {
+  display: block; height: 100%; width: 100%; background: var(--ink-900);
+  transform: scaleX(0); transform-origin: left;
+}
+.preloader.is-filling .preloader__fill { transform: scaleX(1); }
+
+/* Keep the navigation + insight hidden until the system has booted */
+.is-booting .nav, .is-booting .insight { opacity: 0; }

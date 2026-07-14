@@ -79,7 +79,59 @@
   --font-sans: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'Geist Mono', 'IBM Plex Mono', ui-monospace, 'SF Mono', 'DM Mono', monospace;
 
-  /* Type scale — ≤5 sizes per viewport, restrained */
+  /* ══════════════════════════════════════════════════════════════
+      TYPOGRAPHIC VOICES — roles, not a size ladder. Built to the
+      Typography Constitution: restrained, institutional, one dominant
+      element per viewport. Hierarchy comes from composition, spacing
+      and scale — never from heavy weight or oversized type.
+
+        HERO        the opening statement only. 56–72px, Light.
+        EDITORIAL   section headlines. 32–48px, Light. Presence, not
+                    promotion. Max two lines.
+        SECTION     quiet chapter titles. 18–24px, Medium. They
+                    introduce, they never shout.
+        NARRATIVE   reading text. 16–18px, Regular.
+        OPERATIONAL eyebrow labels / metadata. 12–13px, Medium, tracked.
+        ANNOTATION  supporting notes. 13–14px, Regular, muted.
+      ══════════════════════════════════════════════════════════════ */
+  /* 70 / 20 / 10 visual hierarchy:
+     70% body & supporting (15–18px) · 20% section headlines (28–36px)
+     · 10% hero emphasis (44–56px). One heroic moment only. */
+  /* Hero — the ONLY expressive type on the page (48 → 64px, Medium).
+     Every other section stays quiet in the 28–36px / 15–18px ranges,
+     so the hero reads as the single moment of arrival. */
+  --v-hero-size:   clamp(3rem, 6.2vw, 4rem);       /* 48 → 64px */
+  --v-hero-weight: var(--weight-medium);
+  --v-hero-lh:     1.08;
+  --v-hero-ls:     -0.02em;
+
+  --v-edit-size:   clamp(1.75rem, 2.6vw, 2.25rem); /* 28 → 36px — section headline */
+  --v-edit-weight: var(--weight-medium);
+  --v-edit-lh:     1.18;
+  --v-edit-ls:     -0.012em;
+
+  --v-sect-size:   clamp(1.125rem, 1.5vw, 1.375rem); /* 18 → 22px — quiet overline */
+  --v-sect-weight: var(--weight-medium);
+  --v-sect-lh:     1.25;
+  --v-sect-ls:     -0.005em;
+
+  --v-narr-size:   clamp(0.9375rem, 1.1vw, 1rem);  /* 15 → 16px — dominant reading size */
+  --v-narr-weight: var(--weight-regular);
+  --v-narr-lh:     1.6;
+  --v-narr-ls:     0em;
+
+  --v-oper-size:   0.8125rem;                      /* 13px */
+  --v-oper-weight: var(--weight-medium);
+  --v-oper-lh:     1.3;
+  --v-oper-ls:     0.14em;
+
+  --v-anno-size:   0.9375rem;                      /* 15px */
+  --v-anno-weight: var(--weight-regular);
+  --v-anno-lh:     1.5;
+  --v-anno-ls:     0.005em;
+
+
+  /* Legacy aliases (labels / body still map into the voices above) */
   --fs-meta:    0.8125rem;                       /* 13px — labels, captions */
   --fs-nav:     0.875rem;                        /* 14px — nav, buttons */
   --fs-body:    1.0625rem;                       /* 17px — body */
@@ -156,11 +208,34 @@
   --container: 1280px;
   --gutter:    clamp(1.5rem, 5vw, 6rem);
   --section-y: clamp(6rem, 14vh, 11rem);
+
+  /* Two-layer composition — canvas vs. content frame */
+  --frame-inset:   2.5vw;    /* horizontal inset (→ 95vw content frame) */
+  --frame-inset-y: 2.5vh;    /* vertical inset (→ 95vh content frame)   */
+
+  /* Live background-state variables (driven by Scroll-Driven BG system)
+     Set on :root by app.js; consumed everywhere so the whole environment
+     interpolates together. Defaults = hero / light state. */
+  --bg:            #FFFFFF;
+  --atmos-1:       rgba(14,14,16,0.030);
+  --atmos-2:       rgba(14,14,16,0.020);
+  --atmos-line:    #E8E8EA;
+  --atmos-pat:     0.6;
+  --c-fg:          #0E0E10;   /* primary foreground — fixed UI */
+  --c-fg-soft:     #6B6B70;
+  --c-fg-faint:    #9A9A9F;
+  --c-line:        #E8E8EA;
+  --c-surface:     #F6F6F7;
+  --c-surface-2:   #ECECED;
+  --c-glass:       rgba(255,255,255,0.72);
+  --c-glass-border:rgba(255,255,255,0.55);
+  --bg-dur:        650ms;
+  --bg-ease:       cubic-bezier(0.22, 1, 0.36, 1);  /* ease-out, fluid */
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: clip; }
 
 body {
   margin: 0;
@@ -256,3 +331,32 @@ button { font: inherit; color: inherit; cursor: pointer; }
   line-height: 1.4;
 }
 .micro--sm { font-size: var(--fs-micro-sm); letter-spacing: 0.16em; }
+
+/* ── Typographic voices as utilities (see :root voice tokens) ──
+   Composed type multiplies the section's --comp-scale so the engine
+   can still tune density; the ROLE and its rhythm stay constant. */
+.v-hero {
+  font-size: calc(var(--v-hero-size) * var(--comp-scale, 1));
+  font-weight: var(--v-hero-weight); line-height: var(--v-hero-lh); letter-spacing: var(--v-hero-ls);
+}
+.v-editorial {
+  font-size: calc(var(--v-edit-size) * var(--comp-scale, 1));
+  font-weight: var(--v-edit-weight); line-height: var(--v-edit-lh); letter-spacing: var(--v-edit-ls);
+}
+.v-section {
+  font-size: calc(var(--v-sect-size) * var(--comp-scale, 1));
+  font-weight: var(--v-sect-weight); line-height: var(--v-sect-lh); letter-spacing: var(--v-sect-ls);
+}
+.v-narrative {
+  font-size: var(--v-narr-size);
+  font-weight: var(--v-narr-weight); line-height: var(--v-narr-lh); letter-spacing: var(--v-narr-ls);
+}
+.v-operational {
+  font-family: var(--font-mono); font-size: var(--v-oper-size);
+  font-weight: var(--v-oper-weight); line-height: var(--v-oper-lh); letter-spacing: var(--v-oper-ls);
+  text-transform: uppercase;
+}
+.v-annotation {
+  font-size: var(--v-anno-size);
+  font-weight: var(--v-anno-weight); line-height: var(--v-anno-lh); letter-spacing: var(--v-anno-ls);
+}

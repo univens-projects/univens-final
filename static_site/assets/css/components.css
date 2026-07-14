@@ -1,0 +1,293 @@
+/* ════════════════════════════════════════════════════════════════
+    UNIVENS — EDITORIAL READING SYSTEM
+    Each viewport is one page of a strategy document written for
+    business leaders. Typography is the navigation system: scale,
+    weight and placement tell the visitor where to begin, what matters,
+    and what may be skimmed. Emphasis is intentional and rare — bold
+    marks the five words worth remembering, italic marks a human
+    observation, and margin notes carry the company's quiet voice.
+    ════════════════════════════════════════════════════════════════ */
+
+/* ─── Screen shell — a 12-column composition grid ───────────── */
+.screen {
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--sp-5);
+  row-gap: var(--comp-rhythm, var(--sp-7));
+  align-content: center;
+  position: relative;
+}
+.screen > * { position: relative; z-index: 1; }
+
+/* Recurring brand device — a quiet running annotation on every spread.
+   Number + journey phase + operational verb. Stays constant so the
+   publication feels authored, not assembled. */
+.marker {
+  grid-column: 1 / 13; margin: 0; align-self: start; justify-self: start;
+  font-family: var(--font-mono); font-size: var(--fs-micro); letter-spacing: var(--ls-micro);
+  text-transform: uppercase; color: var(--c-fg-faint);
+  display: flex; align-items: baseline; gap: 0.7em;
+}
+.marker__no { color: var(--c-fg); }
+.marker--dark { color: var(--on-dark-faint); }
+.marker--dark .marker__no { color: var(--on-dark); }
+
+/* ─── Editorial reading utilities ──────────────────────────────
+   Emphasis marks meaning, not decoration. Bold = the five words
+   worth remembering. Italic = a human observation / context.
+   Margin notes = the company's quiet voice, set in the gutter. */
+.copy b, .copy strong { font-weight: var(--weight-medium); color: var(--c-fg); }
+.copy em { font-style: italic; color: var(--c-fg-soft); }
+.pull { font-size: calc(var(--v-edit-size) * 0.78); line-height: 1.3; letter-spacing: var(--v-edit-ls); font-weight: var(--weight-regular); color: var(--c-fg); max-width: 22ch; }
+.pull b { color: var(--c-fg); }
+
+.note {
+  grid-column: 9 / 13; align-self: start; justify-self: start;
+  margin: var(--sp-2) 0 0; padding-left: 0.9rem; border-left: 1px solid var(--c-line);
+  font-family: var(--font-mono); font-size: var(--fs-micro); line-height: 1.5;
+  letter-spacing: var(--ls-micro); text-transform: uppercase; color: var(--c-fg-faint);
+}
+.slide--dark .note { border-left-color: var(--on-dark-faint); color: var(--on-dark-faint); }
+.note--left { grid-column: 1 / 4; justify-self: start; }
+
+/* Shared — EDITORIAL voice. Every company statement speaks the same way;
+   authority is the contrast with the Hero word and the tiny operational
+   labels, not an ever-larger headline. */
+.statement {
+  grid-column: 1 / 13; align-self: center; justify-self: center; margin: 0;
+  text-align: center; max-width: 18ch; position: relative; z-index: 2; color: var(--c-fg);
+  font-size: calc(var(--v-edit-size) * var(--comp-scale, 1));
+  font-weight: var(--v-edit-weight); line-height: var(--v-edit-lh); letter-spacing: var(--v-edit-ls);
+}
+.statement em { font-style: normal; color: var(--c-fg-faint); }
+
+/* ─── Shared product primitives ─────────────────────────────── */
+.surface {
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius);
+}
+.label {
+  font-family: var(--font-mono); font-size: var(--fs-micro);
+  letter-spacing: var(--ls-micro); text-transform: uppercase; color: var(--c-fg-faint);
+}
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--c-fg); display: inline-block; }
+
+/* ════════════════════════════════════════════════════════════════
+    01 · RECOGNITION (HERO) — the opening page of a premium report
+    Confirms intent first (operational keywords at Hero scale), then
+    positions. Three elements + a marker. Everything else is whitespace.
+    ════════════════════════════════════════════════════════════════ */
+.screen--convergence { align-items: center; justify-items: start; text-align: left; min-height: 88vh; }
+
+/* HERO voice — the opening statement only. Quietly large, Light weight.
+   56–72px, never fills the screen; the composition is noticed first. */
+.hero-keywords {
+  grid-column: 1 / 13; margin: var(--sp-5) 0 0; color: var(--c-fg);
+  font-size: calc(var(--v-hero-size) * var(--comp-scale, 1));
+  font-weight: var(--v-hero-weight); line-height: var(--v-hero-lh); letter-spacing: var(--v-hero-ls);
+}
+.hero-tag {
+  grid-column: 1 / 13; margin: var(--sp-6) 0 0; color: var(--c-fg);
+  font-size: clamp(1.0625rem, 1.4vw, 1.125rem); line-height: 1.3; font-weight: var(--weight-medium);
+}
+.hero-sub {
+  grid-column: 1 / 13; margin: var(--sp-5) 0 0; max-width: 42ch; color: var(--c-fg-soft);
+  font-size: var(--v-narr-size); line-height: var(--v-narr-lh); letter-spacing: var(--v-narr-ls);
+}
+.hero-cta { grid-column: 1 / 13; margin-top: var(--sp-6); }
+
+.scene__cue {
+  position: absolute; left: 50%; bottom: var(--sp-6); transform: translateX(-50%);
+  font-family: var(--font-mono); font-size: var(--fs-micro-sm); letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--c-fg-faint); text-decoration: none;
+}
+.scene__cue::after { content: ''; display: block; width: 1px; height: 22px; margin: 0.5rem auto 0; background: var(--c-line); }
+
+/* ════════════════════════════════════════════════════════════════
+    02 · CAPABILITY — the problem, then the coordination layer
+    Two-column spread; a huge statement lands after it as a peak.
+    ════════════════════════════════════════════════════════════════ */
+.screen--fragments { position: relative; align-content: center; }
+.intro { grid-column: 1 / 13; display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--sp-6); row-gap: var(--sp-6); align-content: center; }
+.intro__head {
+  grid-column: 1 / 8; margin: 0; align-self: start; color: var(--c-fg);
+  font-size: calc(var(--v-edit-size) * var(--comp-scale, 1));
+  line-height: var(--v-edit-lh); letter-spacing: var(--v-edit-ls); font-weight: var(--v-edit-weight);
+}
+.intro__body { grid-column: 8 / 13; margin: 0; display: flex; flex-direction: column; gap: var(--sp-5); }
+.intro__body p {
+  margin: 0; color: var(--c-fg-soft); max-width: 44ch;
+  font-size: var(--v-narr-size); line-height: var(--v-narr-lh); letter-spacing: var(--v-narr-ls);
+}
+.intro__strong { color: var(--c-fg) !important; font-weight: var(--weight-medium); }
+
+/* The intro headline IS the section headline (28–36px, Medium).
+   No separate "heroic" moment elsewhere — the hero keywords remain the
+   only emphasized type on the page. */
+
+/* ════════════════════════════════════════════════════════════════
+    03 · CAPABILITY (OFFERINGS) — outcomes owned, not departments
+    Five columns; AI-bearing "Automate" carries weight by position
+    and width, not colour.
+    ════════════════════════════════════════════════════════════════ */
+.screen--outcomes { align-content: center; row-gap: var(--sp-7); }
+/* A MATRIX, not a service list: business objective (left axis) mapped to
+   the Univens approach (right). One row highlights the AI-led lane. */
+.matrix { grid-column: 1 / 13; display: grid; grid-template-columns: 1fr; row-gap: 0; }
+.matrix__row {
+  display: grid; grid-template-columns: 5fr 7fr; column-gap: var(--sp-8);
+  padding: var(--sp-5) 0; border-top: 1px solid var(--c-line); align-items: baseline;
+}
+.matrix__row:last-child { border-bottom: 1px solid var(--c-line); }
+.matrix__obj { margin: 0; color: var(--c-fg-soft); font-size: calc(var(--v-narr-size) * 1.05); line-height: 1.4; }
+.matrix__obj b { color: var(--c-fg); }
+.matrix__sol { margin: 0; color: var(--c-fg-soft); font-size: var(--v-narr-size); line-height: 1.55; max-width: 52ch; }
+.matrix__row--lead .matrix__obj, .matrix__row--lead .matrix__sol { color: var(--c-fg); }
+.matrix__row--lead { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.02)); }
+.offerings__note { grid-column: 1 / 13; margin: var(--sp-6) 0 0; color: var(--c-fg-faint); font-family: var(--font-mono); font-size: var(--fs-micro); letter-spacing: var(--ls-micro); text-transform: uppercase; }
+.evidence { color: var(--c-fg); font-family: var(--font-mono); font-size: var(--fs-micro); letter-spacing: var(--ls-micro); text-transform: uppercase; }
+.evidence--inline { grid-column: 1 / 13; margin: var(--sp-4) 0 0; }
+
+/* ════════════════════════════════════════════════════════════════
+    04 · EVIDENCE (CLIENTS) — a slow monochrome marquee
+    The logos belong inside the typography, not inside components.
+    ════════════════════════════════════════════════════════════════ */
+.screen--clients { align-content: center; row-gap: var(--sp-7); }
+.clients__head { grid-column: 1 / 13; }
+.clients__sub { margin: var(--sp-4) 0 0; max-width: 48ch; color: var(--c-fg-soft); font-size: var(--v-narr-size); line-height: var(--v-narr-lh); }
+
+.marquee { grid-column: 1 / 13; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee__track { display: flex; align-items: center; gap: var(--sp-8); width: max-content; animation: marquee 42s linear infinite; }
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee--right .marquee__track { animation-direction: reverse; }
+.mark {
+  font-family: var(--font-sans); font-size: clamp(1.4rem, 2.6vw, 2.1rem); font-weight: var(--weight-medium);
+  letter-spacing: -0.01em; color: var(--c-fg-faint); white-space: nowrap; opacity: 0.78;
+}
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ════════════════════════════════════════════════════════════════
+    05 · RELIABILITY (EXPERIENCE) — credibility made visual
+    Editorial statement + a metrics band + a monochrome marquee.
+    ════════════════════════════════════════════════════════════════ */
+.screen--authority { align-content: center; row-gap: var(--sp-7); }
+/* A TIMELINE: execution shown as progression. The proof rows count up
+   when read, so the numbers arrive as information, not decoration. */
+.timeline { grid-column: 1 / 9; list-style: none; margin: 0; padding: 0; }
+.tl { display: grid; grid-template-columns: 4.5rem 1fr; column-gap: var(--sp-6); padding: var(--sp-4) 0; border-top: 1px solid var(--c-line); align-items: baseline; }
+.tl:first-child { border-top: 0; }
+.tl__year { font-family: var(--font-mono); font-size: var(--fs-micro); letter-spacing: var(--ls-micro); text-transform: uppercase; color: var(--c-fg-faint); font-variant-numeric: tabular-nums; }
+.tl__body { margin: 0; color: var(--c-fg-soft); font-size: var(--v-narr-size); line-height: 1.5; max-width: 52ch; }
+.tl__body b { color: var(--c-fg); }
+.tl--proof .tl__year { color: var(--c-fg); font-size: clamp(1.4rem, 2.4vw, 2rem); font-family: var(--font-sans); font-weight: var(--weight-medium); letter-spacing: -0.02em; line-height: 1; }
+.tl--proof .tl__body { align-self: center; }
+
+/* ════════════════════════════════════════════════════════════════
+     06 · EVIDENCE (INDUSTRIES) — a typographic index, not a catalogue
+     Different sizes, different alignments, large whitespace, no borders.
+     ════════════════════════════════════════════════════════════════ */
+.screen--industries { align-content: center; row-gap: var(--sp-7); }
+.industries__head { grid-column: 1 / 10; display: block; }
+.industries__sub { margin: 0; color: var(--c-fg-soft); font-size: var(--v-narr-size); line-height: var(--v-narr-lh); max-width: 46ch; }
+/* A KNOWLEDGE MAP: industries grouped by the shared problem they present,
+   not listed flat. Three clusters, relational, no cards. */
+.kmap { grid-column: 1 / 13; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: var(--sp-8); margin: var(--sp-7) 0 0; }
+.kmap__cluster { display: flex; flex-direction: column; gap: var(--sp-3); }
+.kmap__cluster + .kmap__cluster { border-left: 1px dotted var(--c-line); padding-left: var(--sp-6); }
+.kmap__label { margin: 0; font-family: var(--font-mono); font-size: var(--fs-micro); letter-spacing: var(--ls-micro); text-transform: uppercase; color: var(--c-fg); }
+.kmap__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--sp-3); }
+.kmap__list li { color: var(--c-fg-soft); font-size: calc(var(--v-narr-size) * 1.1); line-height: 1.3; letter-spacing: -0.01em; }
+
+/* ════════════════════════════════════════════════════════════════
+    07 · VOICES — human proof, horizontally scrolling excerpts
+    ════════════════════════════════════════════════════════════════ */
+.screen--voices { align-content: center; row-gap: var(--sp-7); }
+.voices__head { grid-column: 1 / 13; }
+.voices__sub { margin: var(--sp-4) 0 0; max-width: 48ch; color: var(--c-fg-soft); font-size: var(--v-narr-size); line-height: var(--v-narr-lh); }
+.voices {
+  grid-column: 1 / 13; list-style: none; margin: 0; padding: 0;
+  display: flex; gap: var(--sp-6); overflow-x: auto; scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.voices::-webkit-scrollbar { display: none; }
+.voice { flex: 0 0 auto; width: min(34ch, 80%); padding: var(--sp-5) 0; border-top: 1px solid var(--c-line); scroll-snap-align: start; }
+.voice__meta { display: block; margin-bottom: 0.6rem; font-family: var(--font-mono); font-size: var(--fs-micro-sm); letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-fg-faint); }
+.voice__msg { margin: 0; color: var(--c-fg); max-width: 30ch; font-size: calc(var(--v-sect-size) * var(--comp-scale, 1)); line-height: 1.4; letter-spacing: var(--v-sect-ls); font-weight: var(--v-sect-weight); }
+.voices__note { grid-column: 1 / 13; margin: var(--sp-6) 0 0; font-style: italic; color: var(--c-fg-soft); font-size: var(--v-narr-size); line-height: var(--v-narr-lh); max-width: 52ch; }
+
+/* ════════════════════════════════════════════════════════════════
+    08 · CONSOLE (CONVERSATION) — open the conversation, almost empty
+    ════════════════════════════════════════════════════════════════ */
+.screen--console { align-content: center; text-align: left; row-gap: var(--sp-7); }
+.screen--console .invite {
+  grid-column: 1 / 12; margin: 0; max-width: 22ch; color: var(--c-fg);
+  font-size: calc(var(--v-edit-size) * var(--comp-scale, 1));
+  line-height: 1.2; letter-spacing: var(--v-edit-ls); font-weight: var(--v-edit-weight);
+}
+.screen--console .invite__sub { grid-column: 1 / 8; margin: var(--sp-6) 0 0; color: var(--c-fg-soft); font-size: calc(var(--v-narr-size) * 1.05); line-height: 1.6; letter-spacing: var(--v-narr-ls); }
+.screen--console .console { grid-column: 1 / 8; width: 100%; margin: var(--sp-7) 0 0; }
+.screen--console .signoff { grid-column: 1 / 8; margin: var(--sp-7) 0 0; font-family: var(--font-mono); font-size: var(--fs-micro); letter-spacing: var(--ls-micro); text-transform: uppercase; color: var(--on-dark-faint); }
+.slide--dark .invite { color: var(--on-dark); }
+.slide--dark .invite__sub { color: var(--on-dark-soft); }
+.console { max-width: 560px; }
+.field {
+  display: flex; align-items: center; gap: var(--sp-3);
+  border: 1px solid var(--c-line); border-radius: var(--radius);
+  background: var(--c-surface); padding: 0.5rem 0.5rem 0.5rem 1rem;
+  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+}
+.field:focus-within { border-color: var(--c-fg); box-shadow: var(--shadow-2); }
+.field input {
+  flex: 1; border: 0; background: transparent; color: var(--c-fg); outline: none;
+  font-family: var(--font-sans); font-size: var(--fs-body); padding: 0.55rem 0;
+}
+.field input::placeholder { color: var(--c-fg-faint); }
+.console__status { margin-top: var(--sp-4); font-family: var(--font-mono); font-size: var(--fs-micro); letter-spacing: 0.1em; color: var(--c-fg-faint); min-height: 1.2em; }
+
+/* ════════════════════════════════════════════════════════════════
+    FOOTER — the final statement, not a link column
+    ════════════════════════════════════════════════════════════════ */
+.footer { background: var(--bg); padding: var(--sp-9) 6vw; border-top: 1px solid var(--c-line); display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--sp-8); row-gap: var(--sp-7); align-items: start; }
+.footer__statement { grid-column: 1 / 2; margin: 0; color: var(--c-fg); font-size: clamp(1.75rem, 3.4vw, 2.8rem); line-height: 1.1; letter-spacing: -0.02em; font-weight: var(--weight-regular); max-width: 18ch; }
+.footer__nav { grid-column: 1 / 3; margin: var(--sp-7) 0 0; padding: var(--sp-5) 0 0; border-top: 1px solid var(--c-line); display: flex; flex-wrap: wrap; gap: var(--sp-5); }
+.footer__nav a { color: var(--c-fg-soft); text-decoration: none; font-size: var(--v-narr-size); letter-spacing: var(--v-narr-ls); }
+.footer__nav a:hover { color: var(--c-fg); }
+
+/* ════════════════════════════════════════════════════════════════
+    RESPONSIVE RECOMPOSITION (not scaling)
+    ════════════════════════════════════════════════════════════════ */
+@media (max-width: 880px) {
+  .marker { font-size: 0.6rem; letter-spacing: 0.1em; }
+  .hero-keywords { font-size: calc(var(--v-hero-size) * 0.6); }
+  .screen--convergence { min-height: 80vh; }
+
+  .intro { row-gap: var(--sp-6); }
+  .intro__head { grid-column: 1 / 13; }
+  .intro__body { grid-column: 1 / 13; }
+  .intro .note { grid-column: 1 / 13; border-left: 0; border-top: 1px solid var(--c-line); padding: var(--sp-4) 0 0; margin: var(--sp-5) 0 0; }
+
+  .matrix__row { grid-template-columns: 1fr; row-gap: var(--sp-3); }
+  .matrix__row--lead { background: none; }
+
+  .industries__head { grid-column: 1 / 13; }
+  .industries__sub { grid-column: 1 / 13; }
+  .clients .note, .experience .note, .industries .note { grid-column: 1 / 13; justify-self: start; border-left: 0; border-top: 1px solid var(--c-line); padding: var(--sp-4) 0 0; margin: var(--sp-6) 0 0; }
+  .kmap { grid-template-columns: 1fr; row-gap: var(--sp-6); }
+  .kmap__cluster + .kmap__cluster { border-left: 0; padding-left: 0; }
+  .timeline { grid-column: 1 / 13; }
+
+  .screen--console .invite, .screen--console .invite__sub, .screen--console .console { grid-column: 1 / 13; }
+  .screen--console .invite { font-size: var(--v-edit-size); }
+
+  .footer { grid-template-columns: 1fr; }
+  .footer__statement, .footer__nav { grid-column: 1 / 2; justify-self: start; text-align: left; }
+}
+@media (max-width: 560px) {
+  .voices { grid-auto-columns: 82%; }
+  .mark { font-size: 1.3rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation: none; }
+}

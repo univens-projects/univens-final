@@ -3,198 +3,287 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Univens — Build what your business deserves</title>
-  <meta name="description" content="Execution partner for founders and operators. Better decisions, reliable execution, accountable people." />
+  <title>Univens — Execution for growing businesses</title>
+  <meta name="description" content="Univens is a business execution partner. We take ownership of websites, marketing, AI, branding and operations through one accountable team — so your business moves without building internal teams." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/globals.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/interactions.css" />
+  <link rel="stylesheet" href="assets/css/preloader.css" />
+  <noscript><style>.preloader { display: none !important; }</style></noscript>
 </head>
 <body>
 
+  <!-- Persistent environmental layer — fixed, never scrolls -->
+  <div class="bg-canvas" id="bgCanvas" aria-hidden="true"></div>
+
+  <!-- System initialization — calm premium boot sequence -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__inner">
+      <div class="preloader__mark">Univens</div>
+      <div class="preloader__status" id="preloaderStatus">Initializing workspace&hellip;</div>
+      <div class="preloader__track"><span class="preloader__fill" id="preloaderFill"></span></div>
+    </div>
+  </div>
+
+  <!-- Precision executive toolbar — one continuous architectural component -->
   <nav class="nav" id="nav" aria-label="Primary">
     <a class="brand" href="#hero" aria-label="Univens home">
-      <span class="mark" aria-hidden="true"></span>
       <span class="word">Univens</span>
     </a>
-    <div class="nav-right">
-      <div class="nav-links">
-        <a class="nav-link micro" href="#capabilities">Build</a>
-        <a class="nav-link micro" href="#work">Work</a>
-        <a class="nav-link micro" href="#perspective">Insights</a>
-        <a class="nav-link micro" href="#start">Start</a>
-      </div>
-      <a class="nav-cta link" id="navCta" href="#start">Start the Conversation</a>
+    <div class="nav-links" id="navLinks">
+      <a class="nav-link" href="#introduction">Approach</a>
+      <a class="nav-link" href="#capabilities">Capabilities</a>
+      <a class="nav-link" href="#clients">Clients</a>
+      <a class="nav-link" href="#experience">Experience</a>
+      <a class="nav-link" href="#industries">Industries</a>
+      <a class="nav-link" href="#voices">Voices</a>
+      <span class="nav-indicator" id="navIndicator" aria-hidden="true"></span>
     </div>
-    <div class="nav-progress" aria-hidden="true"><span class="nav-progress-node" id="navNode"></span></div>
+    <a class="nav-cta" id="navCta" href="#start">Start a Conversation</a>
   </nav>
 
   <main class="deck" id="deck">
 
-    <!-- 01 — Hero -->
-    <section class="slide slide--light" id="hero" data-theme="light">
+    <!-- 01 · RECOGNITION — confirm intent before positioning -->
+    <section class="slide slide--light" id="hero" data-theme="light"
+             data-intent="statement" data-comp="convergence" data-density="low" data-name="Recognition">
       <div class="frame">
-        <div class="content reveal">
-          <h1 class="title">Build what your business deserves.</h1>
-          <p class="sub">Growth comes from better decisions, reliable execution, and people who stay accountable. That's where we come in.</p>
-          <div class="actions">
-            <a class="btn btn--solid" href="#start">Start the Conversation <span class="arr" aria-hidden="true">→</span></a>
-            <a class="link" href="#work">See Our Work</a>
+        <div class="screen screen--convergence">
+          <h1 class="hero-keywords">Websites.<br />Marketing.<br />AI.</h1>
+          <p class="hero-tag">Executed by one accountable team.</p>
+          <p class="hero-sub">From websites and marketing to AI and automation, Univens brings experienced specialists together under a single execution partner.</p>
+          <a class="btn btn--solid hero-cta" href="#start" data-magnetic>Start a Conversation <span class="arr" aria-hidden="true">&rarr;</span></a>
+          <a class="scene__cue" href="#introduction" aria-label="Continue">Scroll</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 · CAPABILITY — the problem, then the coordination layer -->
+    <section class="slide slide--light" id="introduction" data-theme="light"
+             data-intent="explain" data-comp="fragments" data-density="mid" data-name="Capability">
+      <div class="frame">
+        <div class="screen screen--fragments reveal">
+          <p class="marker"><span class="marker__no">02</span></p>
+          <div class="intro">
+            <h2 class="intro__head">Execution breaks the moment it is shared across five vendors.</h2>
+            <div class="intro__body copy">
+              <p>A website team, a marketing agency, an automation consultant, a developer, a designer &mdash; each moving on their own timeline, <b>none accountable for the whole</b>.</p>
+              <p>Univens is the coordination layer. One accountable team across technology, AI, marketing, design and operations, working to a single standard from first decision to shipped outcome.</p>
+              <p class="intro__strong">One operating system for business execution.</p>
+            </div>
+            <p class="note">Execution becomes difficult the moment every specialist works independently.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 02 — Reality Check -->
-    <section class="slide slide--dark" id="reality" data-theme="dark">
+    <!-- 03 · CAPABILITY — what we take ownership of, as outcomes -->
+    <section class="slide slide--light" id="capabilities" data-theme="light"
+             data-intent="explain" data-comp="outcomes" data-density="mid" data-name="Capabilities">
       <div class="frame">
-        <div class="content reveal">
-          <h1 class="title">Your business isn't short on ideas. Execution is usually the bottleneck.</h1>
-          <p class="sub">Growth slows when every new opportunity becomes another responsibility. Systems fragment. Teams lose alignment. Progress turns unpredictable. You shouldn't have to build everything alone.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 03 — Shift -->
-    <section class="slide slide--light" id="shift" data-theme="light">
-      <div class="frame">
-        <div class="content reveal">
-          <h1 class="title">You don't need more vendors. You need people who think like owners.</h1>
-          <p class="sub">Every decision should move the business forward. Every project should strengthen the foundation. Every investment should create long-term momentum.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 04 — Proof -->
-    <section class="slide slide--dark" id="proof" data-theme="dark">
-      <div class="frame">
-        <div class="content reveal">
-          <h1 class="title">The experience behind the work speaks first.</h1>
-        </div>
-        <div class="proof-brands reveal" data-delay="1" aria-label="Selected past collaborators">
-          <span class="proof-brand">Disney</span>
-          <span class="proof-brand">Amazon</span>
-          <span class="proof-brand">Nickelodeon</span>
-          <span class="proof-brand">Viacom18</span>
-          <span class="proof-brand proof-brand--more">…</span>
-        </div>
-        <p class="sub proof-note reveal" data-delay="2">Global brands. Startup mindset. Same execution standards.</p>
-      </div>
-    </section>
-
-    <!-- 05 — Selected Work -->
-    <section class="slide slide--light" id="work" data-theme="light">
-      <div class="frame">
-        <div class="content reveal">
-          <h1 class="title">Selected work.</h1>
-          <p class="sub">A few engagements, told as they happened — problem, approach, outcome.</p>
-        </div>
-        <div class="work-list reveal" data-delay="1">
-          <div class="work-item">
-            <p class="work-lead">Media &amp; entertainment</p>
-            <div class="work-step"><span class="micro">Problem</span><p>A beloved brand was losing viewers to fragmented platforms and slow releases.</p></div>
-            <div class="work-step"><span class="micro">Approach</span><p>One content system, rebuilt for every screen and every team.</p></div>
-            <div class="work-step"><span class="micro">Outcome</span><p>Engagement up, costs down, launches three times faster.</p></div>
+        <div class="screen screen--outcomes reveal">
+          <p class="marker"><span class="marker__no">03</span></p>
+          <div class="matrix copy">
+            <div class="matrix__row matrix__row--lead">
+              <p class="matrix__obj"><b>Get found and acquire customers</b></p>
+              <p class="matrix__sol">Performance marketing, SEO, social, content &mdash; planned as one acquisition system, not separate campaigns.</p>
+            </div>
+            <div class="matrix__row">
+              <p class="matrix__obj"><b>Build the digital product</b></p>
+              <p class="matrix__sol">Websites, web apps, e-commerce and UX, shipped to a single standard from first decision to launch.</p>
+            </div>
+            <div class="matrix__row matrix__row--lead">
+              <p class="matrix__obj"><b>Automate the work &middot; AI-led</b></p>
+              <p class="matrix__sol">AI integration, workflow and CRM automation, custom AI &mdash; applied wherever it moves the business most.</p>
+            </div>
+            <div class="matrix__row">
+              <p class="matrix__obj"><b>Strengthen the brand</b></p>
+              <p class="matrix__sol">Brand strategy, design, motion and video that make the rest of the work coherent.</p>
+            </div>
+            <div class="matrix__row">
+              <p class="matrix__obj"><b>Scale the operation</b></p>
+              <p class="matrix__sol">Digital infrastructure, technology and growth consulting, and the operations behind both.</p>
+            </div>
           </div>
-          <div class="work-item">
-            <p class="work-lead">Early-stage venture</p>
-            <div class="work-step"><span class="micro">Problem</span><p>Real demand, but no infrastructure to scale without breaking.</p></div>
-            <div class="work-step"><span class="micro">Approach</span><p>Platform and automation, shipped in twelve weeks.</p></div>
-            <div class="work-step"><span class="micro">Outcome</span><p>Ready for enterprise deals without the enterprise overhead.</p></div>
+          <p class="offerings__note">Every engagement is built around the outcome you need, not a predefined package. <span class="evidence">Last updated Jul 2026</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · EVIDENCE — real partnerships, after capability is clear -->
+    <section class="slide slide--light" id="clients" data-theme="light"
+             data-intent="prove" data-comp="clients" data-density="low" data-name="Clients">
+      <div class="frame">
+        <div class="screen screen--clients reveal">
+          <p class="marker"><span class="marker__no">04</span></p>
+          <div class="clients__head">
+            <p class="clients__sub">From global brands to early-stage ventures &mdash; the same standard, applied to very different problems.</p>
+            <p class="note">A global brand and a seed-stage team receive the same discipline.</p>
+            <p class="evidence evidence--inline">Recently shipped &middot; this quarter</p>
+          </div>
+          <div class="marquee" aria-hidden="true">
+            <div class="marquee__track">
+              <span class="mark">Disney</span><span class="mark">Amazon</span><span class="mark">Nickelodeon</span><span class="mark">Viacom18</span><span class="mark">Lenskart</span><span class="mark">Mphasis</span><span class="mark">Cred</span><span class="mark">Zomato</span>
+              <span class="mark">Disney</span><span class="mark">Amazon</span><span class="mark">Nickelodeon</span><span class="mark">Viacom18</span><span class="mark">Lenskart</span><span class="mark">Mphasis</span><span class="mark">Cred</span><span class="mark">Zomato</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 06 — Capabilities -->
-    <section class="slide slide--light" id="capabilities" data-theme="light">
+    <!-- 05 · RELIABILITY — credibility made visual -->
+    <section class="slide slide--light" id="experience" data-theme="light"
+             data-intent="prove" data-comp="authority" data-density="low" data-name="Experience">
       <div class="frame">
-        <div class="content reveal">
-          <h1 class="title">What we do, when it matters.</h1>
-        </div>
-        <div class="cap reveal" data-delay="1">
-          <div class="cap-block">
-            <p class="cap-word">Build</p>
-            <p class="cap-items">Websites<br>Products<br>Platforms<br>Digital Infrastructure</p>
-          </div>
-          <div class="cap-block">
-            <p class="cap-word">Grow</p>
-            <p class="cap-items">Digital Marketing<br>Performance<br>SEO<br>Content</p>
-          </div>
-          <div class="cap-block">
-            <p class="cap-word">Operate</p>
-            <p class="cap-items">Automation<br>CRM<br>Internal Systems<br>Operations</p>
-          </div>
-          <div class="cap-block">
-            <p class="cap-word">Scale</p>
-            <p class="cap-items">Growth Strategy<br>Consulting<br>Expansion<br>Execution Leadership</p>
-          </div>
-        </div>
-        <p class="micro cap-note reveal" data-delay="2">Growth consulting comes last, on purpose.</p>
-      </div>
-    </section>
-
-    <!-- 07 — Working Together -->
-    <section class="slide slide--dark" id="together" data-theme="dark">
-      <div class="frame">
-        <div class="content reveal">
-          <h1 class="title">Every business grows differently. Our role stays the same.</h1>
-          <p class="sub">Understand. Prioritize. Build. Improve. Repeat. Simple.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 08 — Founder Perspective -->
-    <section class="slide slide--light" id="perspective" data-theme="light">
-      <div class="frame">
-        <div class="content reveal">
-          <h1 class="title">Founder perspective.</h1>
-          <div class="quotes reveal" data-delay="1">
-            <p class="quote">The fastest-growing companies usually become simpler, not more complicated.</p>
-            <p class="quote">A beautiful strategy without execution is just expensive optimism.</p>
-          </div>
+        <div class="screen screen--authority reveal">
+          <p class="marker"><span class="marker__no">05</span></p>
+          <ol class="timeline">
+            <li class="tl">
+              <span class="tl__year">2011</span>
+              <p class="tl__body"><b>Execution begins.</b> A discipline of shipping owned outcomes &mdash; not proposals &mdash; takes shape.</p>
+            </li>
+            <li class="tl">
+              <span class="tl__year">Web</span>
+              <p class="tl__body"><b>Websites &amp; applications.</b> The foundation for every client that follows.</p>
+            </li>
+            <li class="tl">
+              <span class="tl__year">Mkt</span>
+              <p class="tl__body"><b>Marketing systems.</b> Acquisition treated as one continuous operation.</p>
+            </li>
+            <li class="tl">
+              <span class="tl__year">AI</span>
+              <p class="tl__body"><b>Automation &amp; AI.</b> The newest lane, already leading where it moves the business most.</p>
+            </li>
+            <li class="tl tl--proof">
+              <span class="tl__year" data-count="120" data-suffix="+">0</span>
+              <p class="tl__body"><b>projects shipped</b> across nine industries and five-plus global brands.</p>
+            </li>
+            <li class="tl tl--proof">
+              <span class="tl__year" data-count="15">0</span>
+              <p class="tl__body"><b>years of execution</b> &mdash; the bar set by Disney, Amazon and Viacom18, brought to your work.</p>
+            </li>
+          </ol>
+          <p class="note">As of Jul 2026. Numbers update as work ships.</p>
         </div>
       </div>
     </section>
 
-    <!-- 09 — Trust -->
-    <section class="slide slide--light" id="trust" data-theme="light">
+    <!-- 06 · EVIDENCE — breadth, as a typographic index -->
+    <section class="slide slide--light" id="industries" data-theme="light"
+             data-intent="reassure" data-comp="industries" data-density="mid" data-name="Industries">
       <div class="frame">
-        <div class="content reveal">
-          <h1 class="title">What you can expect.</h1>
-          <ul class="trust reveal" data-delay="1">
-            <li>Clear ownership.</li>
-            <li>Transparent communication.</li>
-            <li>Reliable execution.</li>
-            <li>Long-term thinking.</li>
-          </ul>
+        <div class="screen screen--industries reveal">
+          <p class="marker"><span class="marker__no">06</span></p>
+          <div class="industries__head">
+            <p class="industries__sub">We organise industries by the problem they share, not by sector labels. Three clusters cover how a business reaches, runs and scales itself.</p>
+            <p class="note">Currently serving nine industries.</p>
+          </div>
+          <div class="kmap">
+            <div class="kmap__cluster">
+              <p class="kmap__label">Reach</p>
+              <ul class="kmap__list">
+                <li>Education</li>
+                <li>Healthcare</li>
+                <li>Hospitality</li>
+                <li>Retail</li>
+              </ul>
+            </div>
+            <div class="kmap__cluster">
+              <p class="kmap__label">Operate</p>
+              <ul class="kmap__list">
+                <li>Professional Services</li>
+                <li>Technology</li>
+                <li>Media</li>
+              </ul>
+            </div>
+            <div class="kmap__cluster">
+              <p class="kmap__label">Scale</p>
+              <ul class="kmap__list">
+                <li>Manufacturing</li>
+                <li>Startups</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 10 — Final CTA -->
-    <section class="slide slide--dark" id="start" data-theme="dark">
+    <!-- 07 · RELATIONSHIP — dependable delivery, in their words -->
+    <section class="slide slide--light" id="voices" data-theme="light"
+             data-intent="reassure" data-comp="voices" data-density="mid" data-name="Voices">
       <div class="frame">
-        <div class="content reveal">
-          <h1 class="title">Your next stage of growth deserves more than another agency.</h1>
-          <p class="sub">Let's understand what you're building and what is standing in its way.</p>
-          <div class="actions">
-            <a class="btn btn--solid" href="mailto:hello@univens.com">Let's Build It Together <span class="arr" aria-hidden="true">→</span></a>
+        <div class="screen screen--voices reveal">
+          <p class="marker"><span class="marker__no">07</span></p>
+          <div class="voices__head">
+            <p class="voices__sub">Dependable execution, clear communication, long-term trust.</p>
+            <p class="voices__note">The strongest partnerships are the ones you never have to chase.</p>
           </div>
+          <ol class="voices">
+            <li class="voice">
+              <span class="voice__meta">WhatsApp &middot; Fri 09:42</span>
+              <p class="voice__msg">Honestly didn't expect this to move so fast. The team just gets it.</p>
+            </li>
+            <li class="voice">
+              <span class="voice__meta">Email &middot; Re: launch</span>
+              <p class="voice__msg">First time in years I haven't had to chase anyone. Everything shipped when you said it would.</p>
+            </li>
+            <li class="voice">
+              <span class="voice__meta">Slack &middot; #founders</span>
+              <p class="voice__msg">You made a complicated thing feel simple. That's rarer than it sounds.</p>
+            </li>
+            <li class="voice">
+              <span class="voice__meta">Voice note &middot; 0:14</span>
+              <p class="voice__msg">&ldquo;&hellip;just wanted to say thanks &mdash; feels like you actually care whether it works.&rdquo;</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 · CONVERSATION — open, not close -->
+    <section class="slide slide--dark" id="start" data-theme="dark"
+             data-intent="convert" data-comp="console" data-density="low" data-name="Conversation">
+      <div class="frame">
+        <div class="screen screen--console reveal">
+          <p class="marker marker--dark"><span class="marker__no">08</span></p>
+          <p class="invite">If you've read this far, you likely already know what needs to be built.</p>
+          <p class="invite__sub">Execution is the difference between intent and outcome. Tell us what you're working on &mdash; a new launch or something that should simply run better &mdash; and we'll come back with how one accountable team would take it forward. No obligation, no proposal theatre.</p>
+          <form class="console" id="contactForm" novalidate>
+            <div class="field">
+              <input type="email" name="email" placeholder="you@company.com" aria-label="Your email" required />
+              <button class="btn btn--solid" type="submit" data-magnetic>Start a Conversation <span class="arr" aria-hidden="true">&rarr;</span></button>
+            </div>
+            <p class="console__status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+          <p class="signoff">Gaurav &middot; Univens</p>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Executive Insight System — ambient, founder-led intelligence -->
-  <aside class="insight" id="insight" aria-label="Founder insight" aria-live="polite">
+  <!-- Final page of the corporate report -->
+  <footer class="footer" id="footer">
+    <p class="footer__statement">The next important project<br />deserves better execution.</p>
+    <nav class="footer__nav" aria-label="Footer">
+      <a href="#capabilities">Capabilities</a>
+      <a href="#clients">Clients</a>
+      <a href="#experience">Experience</a>
+      <a href="#industries">Industries</a>
+      <a href="#start">Contact</a>
+      <a href="#" rel="noopener">LinkedIn</a>
+      <a href="#" rel="noopener">Instagram</a>
+    </nav>
+  </footer>
+
+  <!-- Executive Insight System — a discreet founder annotation -->
+  <aside class="insight" id="insight" aria-live="polite">
     <span class="insight__pulse" aria-hidden="true"></span>
-    <span class="micro insight__tag" id="insightTag">Observing</span>
-    <span class="insight__div" aria-hidden="true"></span>
     <p class="insight__body" id="insightBody"></p>
-    <span class="insight__progress" id="insightProgress" aria-hidden="true"></span>
   </aside>
 
   <script src="assets/js/app.js"></script>
